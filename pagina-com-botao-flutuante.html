@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transforme Seu Negócio com IA em 90 Dias</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #fbbf24;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 60px 0 80px;
+            text-align: center;
+        }
+        
+        .headline {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .subheadline {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--text);
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Botão Flutuante */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--text);
+            font-weight: 700;
+            padding: 16px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
+            }
+        }
+        
+        .pain-points {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .pain-point {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .pain-point svg {
+            flex-shrink: 0;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        .pain-point-text {
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .testimonial {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .testimonial-author-info h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-author-info p {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .benefit-icon {
+            background-color: var(--primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-icon svg {
+            color: white;
+        }
+        
+        .benefit h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            font-size: 1rem;
+            color: var(--text);
+        }
+        
+        .guarantee {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 60px 0;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .guarantee h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .guarantee p {
+            font-size: 1.125rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta {
+            text-align: center;
+            padding: 80px 0;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+        
+        .cta p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+        
+        .price-regular {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .countdown {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 2rem;
+            }
+            
+            .subheadline {
+                font-size: 1.1rem;
+            }
+            
+            .testimonials, .benefits, .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .pain-points {
+                padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .floating-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+
+   <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1601320107245091');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1601320107245091&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+    <!-- Botão Flutuante -->
+    <a href="https://pay.kirvano.com/88cc4ea6-989f-4aa7-8ba4-79e993d90fcd" class="floating-btn">COMPRAR AGORA</a>
+    
+    <header>
+        <div class="container">
+            <h1 class="headline">Transforme Seu Negócio com IA em 90 Dias: O Guia Passo a Passo que Já Ajudou +500 PMEs a Aumentar Produtividade e Lucros Sem Conhecimento Técnico</h1>
+            <p class="subheadline">Descubra como implementar soluções de IA acessíveis que automatizam tarefas repetitivas, reduzem custos e dão vantagem competitiva - mesmo sem equipe de TI ou grandes investimentos</p>
+            <a href="#pricing" class="btn-primary">QUERO TRANSFORMAR MEU NEGÓCIO AGORA</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="pain-points">
+            <div class="pain-point">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <p class="pain-point-text">Seu negócio está perdendo tempo com tarefas repetitivas que poderiam ser automatizadas?</p>
+            </div>
+            <div class="pain-point">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <p class="pain-point-text">Seus concorrentes já estão usando IA enquanto você ainda tenta entender por onde começar?</p>
+            </div>
+            <div class="pain-point">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <p class="pain-point-text">Você acredita que IA é cara, complicada ou exclusiva para grandes empresas?</p>
+            </div>
+            <div class="pain-point">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <p class="pain-point-text">Está cansado de pagar consultores de tecnologia com soluções complexas que não geram resultados práticos?</p>
+            </div>
+        </div>
+    </div>
+    
+    <section>
+        <div class="container">
+            <h2 class="section-title">Empresários Como Você Que Já Transformaram Seus Negócios</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-content">"Implementamos o chatbot seguindo o plano de 90 dias e reduzimos em 65% o tempo gasto com atendimento básico. Nossos vendedores agora focam apenas em clientes qualificados, aumentando em 28% a conversão."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-image">RM</div>
+                        <div class="testimonial-author-info">
+                            <h4>Rodrigo Mendes</h4>
+                            <p>E-commerce de Eletrônicos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-content">"Nunca imaginei que poderia implementar IA no meu restaurante. Com o sistema de previsão de demanda, reduzimos o desperdício em 42% e nosso controle de estoque finalmente está em dia. O investimento se pagou em menos de 2 meses."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-image">CS</div>
+                        <div class="testimonial-author-info">
+                            <h4>Carla Santos</h4>
+                            <p>Proprietária de Restaurante</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-content">"Como dentista, meu tempo é meu recurso mais valioso. Depois de implementar o sistema de agendamento com IA, as faltas diminuíram 71% e minha agenda está sempre otimizada. Consegui atender 6 pacientes a mais por semana sem sentir o impacto."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-image">AF</div>
+                        <div class="testimonial-author-info">
+                            <h4>André Ferreira</h4>
+                            <p>Clínica Odontológica</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section style="background-color: #f1f5f9;">
+        <div class="container">
+            <h2 class="section-title">O Que Você Vai Descobrir</h2>
+            <div class="benefits">
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3>Identificação de Oportunidades Específicas</h3>
+                    <p>Como identificar oportunidades de IA específicas para seu modelo de negócio, com diagnóstico personalizado e mapeamento de processos.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <polyline points="23 20 23 14 17 14"></polyline>
+                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                        </svg>
+                    </div>
+                    <h3>Método Passo a Passo</h3>
+                    <p>O método passo a passo para implementar IA sem conhecimento técnico avançado.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h3>15 Ferramentas de IA Acessíveis</h3>
+                    <p>15 ferramentas de IA acessíveis que custam entre R$0-500/mês e geram ROI imediato, com instruções de configuração detalhadas.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <h3>Plano de 90 Dias</h3>
+                    <p>O plano de 90 dias que já transformou mais de 500 pequenas e médias empresas, com cronograma detalhado e marcos claros.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                        </svg>
+                    </div>
+                    <h3>Automação de Processos</h3>
+                    <p>Como automatizar processos e reduzir custos operacionais em até 60%, com foco em resultados rápidos e mensuráveis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <h2 class="section-title">Resultados Reais em Números</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">68%</div>
+                    <p class="stat-text">de redução no desperdício em um mercado que implementou IA para gestão de estoque</p>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">71%</div>
+                    <p class="stat-text">de redução nas faltas em uma clínica odontológica usando IA</p>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3x</div>
+                    <p class="stat-text">aumento na produção de conteúdo em uma agência de marketing digital</p>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">85%</div>
+                    <p class="stat-text">das empresas que implementam IA adequadamente reportam vantagem competitiva</p>
+                </div>
+            </div>
+            
+            <div class="guarantee">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 20px; display: block; color: var(--primary);">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                </svg>
+                <h3>GARANTIA DE IMPLEMENTAÇÃO</h3>
+                <p>Se após seguir nosso método passo a passo por 30 dias você não conseguir implementar pelo menos uma solução de IA funcional no seu negócio, devolvemos 100% do seu investimento.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta" id="pricing">
+        <div class="container">
+            <h2>Transforme Seu Negócio com IA nos Próximos 90 Dias</h2>
+            <p>Não deixe seus concorrentes ganharem vantagem. Implemente soluções de IA acessíveis e comece a ver resultados imediatos.</p>
+            <div class="countdown">Oferta especial por tempo limitado: TERMINA EM 48h</div>
+            <div class="price">
+                <span class="price-regular">R$ 339,49</span>
+                R$ 97
+            </div>
+            <a href="https://pay.kirvano.com/88cc4ea6-989f-4aa7-8ba4-79e993d90fcd" class="btn-primary">QUERO TRANSFORMAR MEU NEGÓCIO AGORA</a>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">Pagamento único • Acesso por 12 meses • Inclui atualizações</p>
+        </div>
+    </section>
+</body>
+</html>
